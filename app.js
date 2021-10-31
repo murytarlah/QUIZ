@@ -109,3 +109,40 @@ function optionsTemplate() {
     }
     options.innerHTML = markup;
 }
+
+function displayAlert() {
+    var radios = document.getElementsByTagName("input");
+    if (!radios[0].checked && !radios[1].checked && !radios[2].checked && !radios[3].checked) {
+        alert("Please select an option");
+    }
+}
+console.log(allQuestions.length)
+
+
+
+// loads next question by changing the question count and also adjusting button functionality
+function nextQuestion() {
+    if (questionCount < allQuestions.length-1 && questionCount >= 0) {
+        // increase the value of question count by 1 before calling questionTemplate and optionsTemplate
+        questionCount++;
+        prevBtn.disabled = false
+        questionTemplate();
+        optionsTemplate();
+    }
+    if(questionCount == allQuestions.length-1){
+        nextBtn.innerHTML = 'submit'
+    }
+}
+// loads previous question by changing the question count and also adjusting button functionality
+
+function previousQuestion() {
+    if (questionCount > 0) {
+        questionCount--;
+        nextBtn.disabled = false
+        questionTemplate();
+        optionsTemplate();
+    }
+    if(questionCount == 0){
+        prevBtn.disabled = true
+    }
+}
