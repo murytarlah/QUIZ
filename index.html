@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ninja Quiz</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <link rel="text/stylesheet" href="./style.css">
+</head>
+<body> 
+
+    <!-- =========== Top Section =========== -->
+    <div class="intro py-3 bg-white text-center">
+        <div class="container">
+            <h2 class="text-success display-3 my-4">Alena Quiz</h2>
+        </div>
+    </div>
+
+
+    <!-- ======== Quiz Section =========== -->
+    <div class="quiz py-4 bg-success">
+        <div class="container">
+            <h2 class="my-5 text-white" data-number="">On with the questions...</h2>
+
+            <form class="quiz-form text-light">
+                <h4 class="my-5" id="question"></h4>
+                <div id="options">
+                
+                </div>
+            </form>
+            <div id="controls" class="text-end">
+                <button id="previous" class="btn btn-light">previous</button>
+                <button id="next" class="btn btn-light">next </button>
+            </div>
+        </div>
+    </div>
+    
+    <script type="module" src="app.js"></script>
+</body>
+</html>
