@@ -90,3 +90,22 @@ let allQuestions = [
         correctAnswer:3
     }     
 ]
+
+function questionTemplate(){
+    let currentQuestion = allQuestions[questionCount].question;
+    question.innerHTML = currentQuestion;
+}
+
+
+function optionsTemplate() {
+    let markup = ''
+    for (var i = 0; i < allQuestions[questionCount].options.length; i++) {
+        // var choice = document.getElementsByTagName("p")[i];
+        var option = 
+        `<div class='form-check my-4'>
+            <input class='mx-2' id='${allQuestions[questionCount].id}'type='radio' name='q${questionCount+1}' value='${allQuestions[questionCount].options[i]}'>${allQuestions[questionCount].options[i]}</input>
+        </div>`                    
+        markup += option        
+    }
+    options.innerHTML = markup;
+}
