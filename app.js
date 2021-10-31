@@ -203,3 +203,26 @@ prevBtn.addEventListener('click',(e)=>{
     previousQuestion()
     loadAnswer()
 })
+
+let score = 1
+function showScore(){
+    let answers = Array.from(userAnswers.values())
+    console.log(answers)
+    for (let i = 0; i < allQuestions.length; i++) {
+        const element = answers[i];
+        console.log(element,allQuestions[i].options[allQuestions[i].correctAnswer])
+        if(element == allQuestions[i].options[allQuestions[i].correctAnswer]){
+            score += 1
+        }
+        
+    }
+    alert(`You got ${score} out of ${allQuestions.length} questions`)
+    document.location.reload()
+}
+
+if(nextBtn.innerHTML == 'submit'){
+    nextBtn.addEventListener('click',()=>{
+        e.preventDefault()
+        showScore
+    })
+}
