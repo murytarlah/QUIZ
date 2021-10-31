@@ -146,3 +146,60 @@ function previousQuestion() {
         prevBtn.disabled = true
     }
 }
+
+function loadAnswer(){
+    for (var x = 0; x < allQuestions.length; x++) {
+        let radioButtons = document.getElementsByTagName("input");
+        for (const option of radioButtons) {
+            if (userAnswers.get(Number(option.id)) == option.value) {
+                console.log(userAnswers.get(Number(option.id)))
+                option.checked = true;
+            }    
+        }
+    }
+}
+
+
+Window.onload = questionTemplate()
+Window.onload = optionsTemplate()
+
+nextBtn.addEventListener('click',(e)=>{
+    e.preventDefault()
+    let answer = document.querySelector('input[type="radio"]:checked')
+    if(answer == null){
+        displayAlert()
+    }
+    // console.log(answers.id,answers.value)
+    else if(answer != null){
+        if(userAnswers.has(Number(answer.id))){
+            if(userAnswers.get(Number(answer.id)) == answer.value){
+                loadAnswer()
+                nextQuestion()
+                loadAnswer()
+            }
+            else{
+                userAnswers.set(Number(answer.id),answer.value)
+                nextQuestion()
+                loadAnswer()
+            }
+        }
+        else if(!userAnswers.has(Number(answer.id))){
+            userAnswers.set(Number(answer.id),answer.value)
+            nextQuestion()
+            console.log(userAnswers)
+        }
+    }
+
+    if(userAnswers.size == 7){
+        showScore()
+    }
+    console.log(questionCount,userAnswers.size)
+})
+console.log(userAnswers.size)
+
+
+prevBtn.addEventListener('click',(e)=>{
+    e.preventDefault()
+    previousQuestion()
+    loadAnswer()
+})
